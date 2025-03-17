@@ -10,8 +10,10 @@ package domain;
  */
 import exceptions.UnauthorizedException;
 public class PagoCripto extends Pago implements AutenticacionExtra{
-    public String walletInfo;
-    public String walletPasskey;
+    private String walletInfo;
+    private String walletPasskey;
+    private String walletPasskeyAttempt;
+    private String walletTransactionToken;
     @Override
     public void pagar(){
         try{
