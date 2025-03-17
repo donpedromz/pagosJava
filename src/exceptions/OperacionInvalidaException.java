@@ -8,12 +8,18 @@ package exceptions;
  *
  * @author juanp
  */
-public class UnauthorizedException extends PaymentException {
-
-    public UnauthorizedException() {
-        super("ACCESO DENEGADO");
+public class OperacionInvalidaException extends Exception{
+    /**
+     * 
+     */
+    public OperacionInvalidaException(){
+        super("OPERACIÓN INVALIDA");
     }
-    public UnauthorizedException(String msg){
+    /**
+     * 
+     * @param msg 
+     */
+    public OperacionInvalidaException(String msg){
         super(msg);
     }
 }

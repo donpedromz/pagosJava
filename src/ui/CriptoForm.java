@@ -4,7 +4,10 @@
  */
 package ui;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -31,12 +34,15 @@ public class CriptoForm extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        walletNumber = new javax.swing.JTextField();
         paymentButton = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        errorLabel = new javax.swing.JLabel();
+        walletToken = new javax.swing.JTextField();
+        walletPasskey = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,30 +50,21 @@ public class CriptoForm extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Criptos.jpg"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 282, 430));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 282, 600));
 
         jLabel2.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("INGRESE EL NÚMERO DE SU WALLET");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        walletNumber.setBackground(new java.awt.Color(204, 204, 204));
+        walletNumber.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        walletNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                walletNumberActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 600, 40));
-
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 600, 40));
+        jPanel2.add(walletNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 600, 40));
 
         paymentButton.setBackground(new java.awt.Color(255, 255, 255));
         paymentButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -102,12 +99,36 @@ public class CriptoForm extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        jPanel2.add(paymentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 140, 140));
+        jPanel2.add(paymentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 140, 140));
 
         jLabel5.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("INGRESE LA CONTRASEÑA DE SU WALLET");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        errorLabel.setBackground(new java.awt.Color(255, 0, 0));
+        errorLabel.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 14)); // NOI18N
+        errorLabel.setForeground(new java.awt.Color(0, 0, 0));
+        errorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel2.add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 450, 40));
+
+        walletToken.setBackground(new java.awt.Color(204, 204, 204));
+        walletToken.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        walletToken.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                walletTokenActionPerformed(evt);
+            }
+        });
+        jPanel2.add(walletToken, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 600, 40));
+
+        walletPasskey.setBackground(new java.awt.Color(204, 204, 204));
+        walletPasskey.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel2.add(walletPasskey, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 600, 40));
+
+        jLabel7.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("INGRESE EL TOKEN GENERADO POR SU APP");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,13 +144,13 @@ public class CriptoForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void walletNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_walletNumberActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void walletTokenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletTokenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_walletTokenActionPerformed
 
     public JPanel getPaymentButton() {
         return paymentButton;
@@ -137,54 +158,40 @@ public class CriptoForm extends javax.swing.JFrame {
     public void addPaymentButtonClickListener(java.awt.event.MouseListener l){
         this.paymentButton.addMouseListener(l);
     }
+
+    public JLabel getErrorLabel() {
+        return errorLabel;
+    }
+
+    public JTextField getWalletNumber() {
+        return walletNumber;
+    }
+
+    public JPasswordField getWalletPasskey() {
+        return walletPasskey;
+    }
+
+    public JTextField getWalletToken() {
+        return walletToken;
+    }
+    
     public void showWindow(){
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CriptoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CriptoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CriptoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CriptoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CriptoForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel paymentButton;
+    private javax.swing.JTextField walletNumber;
+    private javax.swing.JPasswordField walletPasskey;
+    private javax.swing.JTextField walletToken;
     // End of variables declaration//GEN-END:variables
 }

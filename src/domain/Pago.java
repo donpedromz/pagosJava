@@ -8,17 +8,23 @@ package domain;
  *
  * @author juanp
  */
+import exceptions.PaymentException;
 public abstract class Pago {
-    private String idPago;
-    private double montoTransaccion;
-    private String cuentaDestino;
+    protected String idPago;
+    protected double montoTransaccion;
+    protected String cuentaDestino;
     public Pago(){}
     public Pago(String idPago, double montoTransaccion, String cuentaDestino){
         this.idPago = idPago;
         this.montoTransaccion = montoTransaccion;
         this.cuentaDestino = cuentaDestino;
     }
-    public abstract void pagar();
+    public Pago(Pago payment){
+        this.idPago = payment.idPago;
+        this.montoTransaccion = payment.montoTransaccion;
+        this.cuentaDestino = payment.cuentaDestino;
+    }
+    public abstract void pagar() throws PaymentException;
     public String getIdPago() {
         return idPago;
     }

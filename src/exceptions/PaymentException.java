@@ -8,6 +8,11 @@ package exceptions;
  *
  * @author juanp
  */
-public class PaymentException {
-    
+public class PaymentException extends Exception{
+    public PaymentException(){
+        super("ERROR AL PROCESAR SU PAGO");
+    }
+    public PaymentException(String msg){
+        super(msg);
+    }
 }
