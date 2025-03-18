@@ -40,9 +40,13 @@ public class CriptoForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
-        walletToken = new javax.swing.JTextField();
+        transactionAmmount = new javax.swing.JTextField();
         walletPasskey = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
+        walletToken1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        walletToken2 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +54,7 @@ public class CriptoForm extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Criptos.jpg"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 282, 600));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 0, 282, 660));
 
         jLabel2.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -64,7 +68,7 @@ public class CriptoForm extends javax.swing.JFrame {
                 walletNumberActionPerformed(evt);
             }
         });
-        jPanel2.add(walletNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 600, 40));
+        jPanel2.add(walletNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 600, 40));
 
         paymentButton.setBackground(new java.awt.Color(255, 255, 255));
         paymentButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -99,27 +103,27 @@ public class CriptoForm extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        jPanel2.add(paymentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 140, 140));
+        jPanel2.add(paymentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, 140, 140));
 
         jLabel5.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("INGRESE LA CONTRASEÑA DE SU WALLET");
+        jLabel5.setText("INGRESE LA PASSKEY DE SU WALLET");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         errorLabel.setBackground(new java.awt.Color(255, 0, 0));
         errorLabel.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 14)); // NOI18N
         errorLabel.setForeground(new java.awt.Color(0, 0, 0));
         errorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel2.add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 450, 40));
+        jPanel2.add(errorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 450, 40));
 
-        walletToken.setBackground(new java.awt.Color(204, 204, 204));
-        walletToken.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        walletToken.addActionListener(new java.awt.event.ActionListener() {
+        transactionAmmount.setBackground(new java.awt.Color(204, 204, 204));
+        transactionAmmount.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        transactionAmmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                walletTokenActionPerformed(evt);
+                transactionAmmountActionPerformed(evt);
             }
         });
-        jPanel2.add(walletToken, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 600, 40));
+        jPanel2.add(transactionAmmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 600, 40));
 
         walletPasskey.setBackground(new java.awt.Color(204, 204, 204));
         walletPasskey.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -127,8 +131,36 @@ public class CriptoForm extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("INGRESE EL TOKEN GENERADO POR SU APP");
+        jLabel7.setText("INGRESE EL MONTO A PAGAR");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+
+        walletToken1.setBackground(new java.awt.Color(204, 204, 204));
+        walletToken1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        walletToken1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                walletToken1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(walletToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 600, 40));
+
+        jLabel8.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("INGRESE LA CUENTA DESTINO");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
+
+        walletToken2.setBackground(new java.awt.Color(204, 204, 204));
+        walletToken2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        walletToken2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                walletToken2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(walletToken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 600, 40));
+
+        jLabel9.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("INGRESE LA CUENTA DESTINO");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,7 +170,7 @@ public class CriptoForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -148,9 +180,17 @@ public class CriptoForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_walletNumberActionPerformed
 
-    private void walletTokenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletTokenActionPerformed
+    private void transactionAmmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionAmmountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_walletTokenActionPerformed
+    }//GEN-LAST:event_transactionAmmountActionPerformed
+
+    private void walletToken1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletToken1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_walletToken1ActionPerformed
+
+    private void walletToken2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletToken2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_walletToken2ActionPerformed
 
     public JPanel getPaymentButton() {
         return paymentButton;
@@ -171,9 +211,10 @@ public class CriptoForm extends javax.swing.JFrame {
         return walletPasskey;
     }
 
-    public JTextField getWalletToken() {
-        return walletToken;
+    public JTextField getTransactionAmmount() {
+        return transactionAmmount;
     }
+    
     
     public void showWindow(){
         this.setLocationRelativeTo(null);
@@ -188,10 +229,14 @@ public class CriptoForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel paymentButton;
+    private javax.swing.JTextField transactionAmmount;
     private javax.swing.JTextField walletNumber;
     private javax.swing.JPasswordField walletPasskey;
-    private javax.swing.JTextField walletToken;
+    private javax.swing.JTextField walletToken1;
+    private javax.swing.JTextField walletToken2;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,18 +4,16 @@
  */
 package ui;
 
-import javax.swing.JPanel;
-
 /**
  *
  * @author juanp
  */
-public class PaypalForm extends javax.swing.JFrame {
+public class CardForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form PaypalForm
+     * Creates new form CardForm
      */
-    public PaypalForm() {
+    public CardForm() {
         initComponents();
     }
 
@@ -38,10 +36,12 @@ public class PaypalForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        walletToken1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        walletToken2 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,8 +50,8 @@ public class PaypalForm extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("INGRESE EL NUMERO DE CUENTA");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jLabel2.setText("INGRESE EL NUMERO DE TARJETA");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -60,7 +60,7 @@ public class PaypalForm extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 600, 40));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 600, 40));
 
         jTextField2.setBackground(new java.awt.Color(204, 204, 204));
         jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -69,7 +69,7 @@ public class PaypalForm extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 600, 40));
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 600, 40));
 
         paymentButton.setBackground(new java.awt.Color(255, 255, 255));
         paymentButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -92,7 +92,7 @@ public class PaypalForm extends javax.swing.JFrame {
                     .addGroup(paymentButtonLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         paymentButtonLayout.setVerticalGroup(
             paymentButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,64 +104,78 @@ public class PaypalForm extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        jPanel2.add(paymentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 140, 140));
+        jPanel2.add(paymentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 140, 140));
 
         jLabel5.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("INGRESE EL CODIGO DE VERIFICACION DE SU CUENTA");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        jLabel5.setText("INGRESE EL CVV DE SU TARJETA");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel1.setBackground(new java.awt.Color(51, 255, 153));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Paypal_2014_logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/layout_icon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49))
+                .addGap(48, 48, 48))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(178, 178, 178)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(291, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addGap(287, 287, 287))
         );
 
-        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 300, 660));
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 300, 670));
 
-        walletToken1.setBackground(new java.awt.Color(204, 204, 204));
-        walletToken1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        walletToken1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel6.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("INGRESE LA FECHA DE VENCIMIENTO MM//YY");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        jTextField3.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                walletToken1ActionPerformed(evt);
+                jTextField3ActionPerformed(evt);
             }
         });
-        jPanel2.add(walletToken1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 600, 40));
+        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 600, 40));
+
+        jLabel7.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("INGRESE EL MONTO DE PAGO $");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        jTextField4.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 600, 40));
 
         jLabel8.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("INGRESE LA CUENTA DESTINO");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Hack Nerd Font Mono", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("INGRESE EL MONTO A PAGAR $");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
-
-        walletToken2.setBackground(new java.awt.Color(204, 204, 204));
-        walletToken2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        walletToken2.addActionListener(new java.awt.event.ActionListener() {
+        jTextField5.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                walletToken2ActionPerformed(evt);
+                jTextField5ActionPerformed(evt);
             }
         });
-        jPanel2.add(walletToken2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 600, 40));
+        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 600, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +186,7 @@ public class PaypalForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -187,38 +201,42 @@ public class PaypalForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void walletToken1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletToken1ActionPerformed
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_walletToken1ActionPerformed
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void walletToken2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletToken2ActionPerformed
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_walletToken2ActionPerformed
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
-    public JPanel getPaymentButton() {
-        return paymentButton;
-    }
-    public void addPaymentButtonClickListener(java.awt.event.MouseListener l){
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    public void addPaymentButtonClickListener(java.awt.event.MouseListener l) {
         this.paymentButton.addMouseListener(l);
     }
-    public void showWindow(){
+    public void showWindow() {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JPanel paymentButton;
-    private javax.swing.JTextField walletToken1;
-    private javax.swing.JTextField walletToken2;
     // End of variables declaration//GEN-END:variables
 }

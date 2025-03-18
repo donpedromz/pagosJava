@@ -14,30 +14,25 @@ import exceptions.UnauthorizedException;
 import exceptions.PaymentException;
 
 public class PagoCripto extends Pago implements AutenticacionExtra {
-    private String walletNumber;
-    private String walletPasskey;
+    private String walletNumberAttempt;
     private String walletPasskeyAttempt;
-    private String walletTransactionToken;
-    private String walletTransactionAttempt;
+    private String walletTransactionTokenAttempt;
 
     public PagoCripto(String id, double montoTransaccion, String cuentaDestino) {
         super(id, montoTransaccion, cuentaDestino);
     }
 
-    public PagoCripto(String walletPasskey, String walletPasskeyAttempt, String walletTransactionToken, String walletTransactionAttempt, String idPago, double montoTransaccion, String cuentaDestino) {
+    public PagoCripto(String walletNumberAttempt, String walletPasskeyAttempt, String walletTransactionTokenAttempt, String idPago, double montoTransaccion, String cuentaDestino) {
         super(idPago, montoTransaccion, cuentaDestino);
-        this.walletPasskey = walletPasskey;
+        this.walletNumberAttempt = walletNumberAttempt;
         this.walletPasskeyAttempt = walletPasskeyAttempt;
-        this.walletTransactionToken = walletTransactionToken;
-        this.walletTransactionAttempt = walletTransactionAttempt;
+        this.walletTransactionTokenAttempt = walletTransactionTokenAttempt;
     }
+    
 
     public PagoCripto(Builder builder) {
         super(builder.idPago, builder.montoTransaccion, builder.cuentaDestino);
-        this.walletPasskey = builder.walletPasskey;
         this.walletPasskeyAttempt = builder.walletPasskeyAttempt;
-        this.walletTransactionToken = builder.walletTransactionToken;
-        this.walletTransactionAttempt = builder.walletTransactionAttempt;
     }
 
     @Override

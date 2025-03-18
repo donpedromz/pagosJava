@@ -225,15 +225,6 @@ public class PagoForm extends javax.swing.JFrame {
     private void cardPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cardPanelMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_cardPanelMouseClicked
-
-    public JTextField getCuentaDestinoField() {
-        return cuentaDestinoField;
-    }
-
-    public JTextField getMontoTransaccionField() {
-        return montoTransaccionField;
-    }
-
     
     public JPanel getCardPanel() {
         return cardPanel;

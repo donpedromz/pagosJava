@@ -14,22 +14,34 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import ui.PagoForm;
 import ui.CriptoForm;
+import ui.PaypalForm;
+import ui.CardForm;
 import domain.Pago;
+import domain.account.*;
 import domain.payment.PagoTarjeta;
 import domain.payment.PagoPayPal;
 import domain.payment.PagoCripto;
 import exceptions.OperacionInvalidaException;
 import exceptions.PaymentException;
-import ui.PaypalForm;
 import java.lang.Math;
+import javax.swing.JTextField;
 
 public class PagoController {
 
     private PagoForm formularioPagos;
     private CriptoForm criptoForm;
     private PaypalForm paypalForm;
+    private CardForm cardForm;
     private Pago paymentStrategy;
+    private GestorCuentas gestor;
+
     public PagoController() {
+        this.gestor = new GestorCuentas();
+        this.createPaymentForm();
+    }
+
+    public PagoController(GestorCuentas gestor) {
+        this.gestor = gestor;
         this.createPaymentForm();
     }
 
@@ -40,7 +52,8 @@ public class PagoController {
         return sb.toString();
     }
 
-    private double validateNumericField() throws OperacionInvalidaException {
+    /*
+    private double validateNumericField(JTextField textField) throws OperacionInvalidaException {
         double saldoTransaccion = 0;
         try {
             getPaymentFormTransactionAmmountCampText();
@@ -52,27 +65,7 @@ public class PagoController {
         }
         return saldoTransaccion;
     }
-
-    private double getPaymentFormTransactionAmmountCampText(){
-        return Double.parseDouble(this.formularioPagos.getMontoTransaccionField().getText());
-
-    }
-
-    private String getPaymentFormAccountCampText() {
-        return this.formularioPagos.getCuentaDestinoField().getText();
-    }
-
-    private boolean validateTextCamp() {
-        try {
-            double saldo = validateNumericField();
-        } catch (OperacionInvalidaException e) {
-            this.formularioPagos.getLabelError().setText(e.getMessage());
-            return false;
-        }
-        this.formularioPagos.getLabelError().setText(null);
-        return true;
-    }
-
+     */
     private void createPaymentForm() {
         this.formularioPagos = new PagoForm();
         this.formularioPagos.showWindow();
@@ -80,6 +73,12 @@ public class PagoController {
         this.formularioPagos.addCriptoPanelMouseEventListener(new ButtonClickListener());
         this.formularioPagos.addPaypalPanelMouseEventListener(new ButtonClickListener());
         this.formularioPagos.showWindow();
+    }
+
+    private void createCardForm() {
+        this.cardForm = new CardForm();
+        this.cardForm.addPaymentButtonClickListener(new ButtonClickListener());
+        this.cardForm.showWindow();
     }
 
     private void createCriptoForm() {
@@ -111,46 +110,47 @@ public class PagoController {
         
     }
      */
+    private double getDoubleFromTextField(JTextField field) throws OperacionInvalidaException {
+        double ammount = 0;
+        try {
+            ammount = Double.parseDouble(field.getText());
+        } catch (Exception e) {
+            throw new OperacionInvalidaException("INGRESE UN VALOR NUMERICO");
+        }
+        if (ammount <= 0) {
+            throw new OperacionInvalidaException("POR FAVOR INGRESE UN PAGO MAYOR A 0");
+        }
+        return ammount;
+    }
+
     private class ButtonClickListener extends MouseAdapter {
 
         @Override
         public void mouseClicked(MouseEvent e) {
             JPanel src = (JPanel) e.getSource();
             if (src == formularioPagos.getCardPanel()) {
-                if (validateTextCamp()) {
-                    paymentStrategy = new PagoTarjeta();
-                }
+                createCardForm();
             }
             if (src == formularioPagos.getPaypalPanel()) {
-                if (validateTextCamp()) {
-                    paymentStrategy = new PagoPayPal();
-                    createPaypalForm();
-                }
-
+                createPaypalForm();
             }
             if (src == formularioPagos.getCriptoPanel()) {
-                if (validateTextCamp()) {
-                    createCriptoForm();
-                }
-
+                createCriptoForm();
             }
             if (criptoForm != null) {
-                /*
-                if (src == criptoForm.getPaymentButton()){
-                    PagoCripto payment = new PagoCripto.Builder().idPago(paymentStrategy.getIdPago())
-                            .cuentaDestino(paymentStrategy.getCuentaDestino())
-                            .montoTransaccion(paymentStrategy.getMontoTransaccion())
-                            .walletPasskeyAttempt(new String(criptoForm.getWalletPasskey().getPassword()))
-                            .walletTransactionTokenAttempt(criptoForm.getWalletToken().getText())
-                            */
-                            
-                    if (handlePayment(paymentStrategy, criptoForm.getErrorLabel())){
+                if (src == criptoForm.getPaymentButton()) {
+                    try {
+                        Cuenta origen = gestor.buscarCuenta(criptoForm.getWalletNumber().getText());
+                        double montoTransaccion = getDoubleFromTextField(criptoForm.getTransactionAmmount());
+                    } catch (OperacionInvalidaException exception) {
+                        criptoForm.getErrorLabel().setText(exception.getMessage());
+                    }
+                    if (handlePayment(paymentStrategy, criptoForm.getErrorLabel())) {
                         criptoForm.dispose();
                         paymentStrategy = null;
                     }
                 }
             }
         }
-
     }
 }

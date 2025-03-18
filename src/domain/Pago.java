@@ -8,9 +8,11 @@ package domain;
  *
  * @author juanp
  */
+import domain.account.Cuenta;
 import exceptions.PaymentException;
 public abstract class Pago {
     protected String idPago;
+    protected Cuenta cuentaOrigen;
     protected double montoTransaccion;
     protected String cuentaDestino;
     public Pago(){}
