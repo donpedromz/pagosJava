@@ -12,10 +12,11 @@ public class Paypal extends Cuenta{
     private String codigoVerificacion;
     private String token;
 
-    public Paypal(String codigoVerificacion, String token, String numeroCuenta) {
+    public Paypal(String codigoVerificacion,String numeroCuenta) {
         super(numeroCuenta);
         this.codigoVerificacion = codigoVerificacion;
-        this.token = token;
     }
-    
+    public void generateToken(){
+        this.token = new String("12345");
+    }
 }

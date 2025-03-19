@@ -10,35 +10,30 @@ package domain.payment;
  */
 import domain.AutenticacionExtra;
 import domain.Pago;
+import domain.account.Cuenta;
+import domain.account.Wallet;
 import exceptions.UnauthorizedException;
 import exceptions.PaymentException;
 
 public class PagoCripto extends Pago implements AutenticacionExtra {
-    private String walletNumberAttempt;
     private String walletPasskeyAttempt;
     private String walletTransactionTokenAttempt;
-
+    private Wallet wallet;
     public PagoCripto(String id, double montoTransaccion, String cuentaDestino) {
         super(id, montoTransaccion, cuentaDestino);
     }
-
-    public PagoCripto(String walletNumberAttempt, String walletPasskeyAttempt, String walletTransactionTokenAttempt, String idPago, double montoTransaccion, String cuentaDestino) {
-        super(idPago, montoTransaccion, cuentaDestino);
-        this.walletNumberAttempt = walletNumberAttempt;
-        this.walletPasskeyAttempt = walletPasskeyAttempt;
-        this.walletTransactionTokenAttempt = walletTransactionTokenAttempt;
-    }
-    
-
     public PagoCripto(Builder builder) {
         super(builder.idPago, builder.montoTransaccion, builder.cuentaDestino);
         this.walletPasskeyAttempt = builder.walletPasskeyAttempt;
+        this.walletPasskeyAttempt = builder.walletPasskeyAttempt;
+        this.wallet = builder.wallet;
+        this.wallet.generateToken();
     }
 
     @Override
     public void pagar() throws PaymentException {
         try {
-            autenticarTransaccion(walletPasskey);
+            autenticarTransaccion();
             System.out.println("PAGO REALIZADO!");
         } catch (UnauthorizedException e) {
             System.out.println("PAGO NO AUTORIZADO");
@@ -47,61 +42,40 @@ public class PagoCripto extends Pago implements AutenticacionExtra {
     }
 
     @Override
-    public void autenticarTransaccion(String passKey) throws UnauthorizedException {
-        if (!this.walletPasskey.equals(passKey)) {
-            throw new UnauthorizedException("PASSKEY DE SU WALLET INCORRECTA");
+    public void autenticarTransaccion() throws UnauthorizedException {
+        this.wallet.generateToken();
+        if (!this.walletPasskeyAttempt.equals(wallet.getPasskey())
+                || !this.walletTransactionTokenAttempt.equals(wallet.getToken())) {
+            throw new UnauthorizedException("ACCESO NO AUTORIZADO");
         }
-        if (!this.walletTransactionToken.equals(walletTransactionAttempt)) {
-            throw new UnauthorizedException("TOKEN INVALIDO");
-        }
-
     }
 
     public static class Builder {
-
+        private Wallet wallet;
         private String idPago;
         private double montoTransaccion;
         private String cuentaDestino;
-        private String walletPasskey;
         private String walletPasskeyAttempt;
-        private String walletTransactionToken;
-        private String walletTransactionAttempt;
-
         public Builder idPago(String idPago) {
             this.idPago = this.idPago;
             return this;
         }
-
         public Builder montoTransaccion(double montoTransaccion) {
             this.montoTransaccion = montoTransaccion;
             return this;
         }
-
         public Builder cuentaDestino(String cuentaDestino) {
             this.cuentaDestino = cuentaDestino;
             return this;
         }
-
-        public Builder walletPasskey(String walletPasskey) {
-            this.walletPasskey = walletPasskey;
+        public Builder wallet(Cuenta wallet){
+            this.wallet = (Wallet) wallet;
             return this;
         }
-
         public Builder walletPasskeyAttempt(String walletPasskeyAttempt) {
             this.walletPasskeyAttempt = this.walletPasskeyAttempt;
             return this;
         }
-
-        public Builder walletTransactionToken(String walletTransactionToken) {
-            this.walletTransactionToken = this.walletTransactionToken;
-            return this;
-        }
-
-        public Builder walletTransactionTokenAttempt(String walletTransactionTokenAttempt) {
-            this.walletTransactionAttempt = walletTransactionTokenAttempt;
-            return this;
-        }
-
         public PagoCripto build() {
             return new PagoCripto(this);
         }

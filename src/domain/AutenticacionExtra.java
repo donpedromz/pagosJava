@@ -14,5 +14,5 @@ public interface AutenticacionExtra {
     /**
      *
      * @throws exceptions.UnauthorizedException */
-    public void autenticarTransaccion(String authToken)throws UnauthorizedException;
+    public void autenticarTransaccion()throws UnauthorizedException;
 }

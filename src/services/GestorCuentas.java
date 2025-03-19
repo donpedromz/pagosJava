@@ -27,6 +27,6 @@ public class GestorCuentas {
                 return c;
             }
         }
-        throw new OperacionInvalidaException("CUENTA" + numeroCuenta +" NO ENCONTRADA");
+        throw new OperacionInvalidaException("CUENTA " + numeroCuenta +" NO ENCONTRADA");
     }
 }

@@ -25,6 +25,7 @@ import exceptions.OperacionInvalidaException;
 import exceptions.PaymentException;
 import java.lang.Math;
 import javax.swing.JTextField;
+import ui.tokenInput;
 
 public class PagoController {
 
@@ -34,7 +35,7 @@ public class PagoController {
     private CardForm cardForm;
     private Pago paymentStrategy;
     private GestorCuentas gestor;
-
+    private tokenInput tokenInput;
     public PagoController() {
         this.gestor = new GestorCuentas();
         this.createPaymentForm();
@@ -44,7 +45,11 @@ public class PagoController {
         this.gestor = gestor;
         this.createPaymentForm();
     }
-
+    private void createTokenForm(){
+        this.tokenInput = new tokenInput();
+        this.tokenInput.addTokenButtonListener(new ButtonClickListener());
+        this.tokenInput.showWindow();
+    }
     private String generatePaymentId(String paymentType) {
         StringBuilder sb = new StringBuilder();
         sb.append(paymentType).append("-");
@@ -122,7 +127,6 @@ public class PagoController {
         }
         return ammount;
     }
-
     private class ButtonClickListener extends MouseAdapter {
 
         @Override
@@ -142,12 +146,17 @@ public class PagoController {
                     try {
                         Cuenta origen = gestor.buscarCuenta(criptoForm.getWalletNumber().getText());
                         double montoTransaccion = getDoubleFromTextField(criptoForm.getTransactionAmmount());
+                        String passkey = new String(criptoForm.getWalletPasskey().getPassword());
+                        String cuentaDestino = criptoForm.getDestinationAccount().getText();
+                        PagoCripto pagoCripto = new PagoCripto.Builder().cuentaDestino(cuentaDestino)
+                                .montoTransaccion(montoTransaccion)
+                                .wallet(origen)
+                                .walletPasskeyAttempt(passkey)
+                                .idPago(generatePaymentId("CRYPTO"))
+                                .build();
                     } catch (OperacionInvalidaException exception) {
                         criptoForm.getErrorLabel().setText(exception.getMessage());
-                    }
-                    if (handlePayment(paymentStrategy, criptoForm.getErrorLabel())) {
-                        criptoForm.dispose();
-                        paymentStrategy = null;
+                        return;
                     }
                 }
             }

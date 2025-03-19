@@ -22,5 +22,4 @@ public class Cuenta {
     public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
-    
 }

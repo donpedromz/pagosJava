@@ -27,6 +27,7 @@ public class PagoPayPal extends Pago implements AutenticacionExtra{
 
     @Override
     public void autenticarTransaccion(String authToken) throws UnauthorizedException{
+        
         if(!this.authToken.equals(authToken)){
             throw new UnauthorizedException("TOKEN INGRESADO INVALIDO");
         }
